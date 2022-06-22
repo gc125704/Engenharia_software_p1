@@ -8,6 +8,7 @@ import classes.Cliente;
 import classes.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,12 +20,17 @@ public class app {
     public static void main(String[] args) throws ParseException {
 
         try {
+            
+            ArrayList<Cliente> clientes = new ArrayList<>();
+            
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             Date data = formato.parse("23/11/2015");
 
             Cliente cli = new Cliente(1, "Robson", "123456", data);
 
             cli.cadastrar(cli);
+            
+            clientes.add(cli);
             
             System.out.println("--------------");
 
