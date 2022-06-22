@@ -1,3 +1,5 @@
+package classes;
+
 /** @pdOid a9292204-6fed-48ed-af52-77af376662e3 */
 public class Danificado implements Estado {
    /** @pdOid 8ca14f65-682f-4e93-a06f-7d963e46e746 */

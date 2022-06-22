@@ -1,3 +1,5 @@
+package classes;
+
 /** @pdOid 4b2388e9-77bc-4dd2-88ae-d891554d38ca */
 public class Emprestado implements Estado {
    /** @pdOid e20f8e3a-cdc1-41b3-acd7-ac4698eced15 */

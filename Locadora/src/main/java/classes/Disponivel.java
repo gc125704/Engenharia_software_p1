@@ -1,3 +1,5 @@
+package classes;
+
 /** @pdOid a2921e06-a68a-4067-ad0f-590fc30c1d97 */
 public class Disponivel implements Estado {
    /** @pdOid 9a0401fe-57c4-4cde-b9e1-84949c50a4ac */
