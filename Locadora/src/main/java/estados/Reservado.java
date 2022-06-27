@@ -1,4 +1,4 @@
-package classes;
+package estados;
 
 /***********************************************************************
  * Module:  Reservado.java
@@ -6,6 +6,9 @@ package classes;
  * Purpose: Defines the Class Reservado
  ***********************************************************************/
 
+import classes.Cliente;
+import classes.Midia;
+import estados.Estado;
 import java.util.*;
 
 /** @pdOid 18cd4ccd-333d-4110-b85b-47b69e4ee60e */
@@ -13,11 +16,6 @@ public class Reservado implements Estado {
    /** @pdOid 0036bc29-9e7a-4243-b341-fa891fb3fa1d */
    public void emprestar() {
    System.out.println("Impossivel emprestar, mídia ja reservada");
-   }
-   
-   /** @pdOid 45302891-6bba-4703-8e0e-d99a4bd333d2 */
-   public void reservar() {
-   System.out.println("Impossivel reservar, mídia já reservada");
    }
    
    /** @pdOid ce75a146-311a-43b8-9520-0d664a27e356 */
@@ -29,5 +27,12 @@ public class Reservado implements Estado {
    public void cancelar() {
    System.out.println("Reserva cancelada com sucesso");
    }
+
+    @Override
+    public void reservar(Cliente c, Midia m) {
+        System.out.println("a midia " + m.getTituloTemp() + "nao pode ser"
+                + " emprestada para o cliente " + c.getNome() + " pois ja esta"
+                        + "reservada");
+    }
 
 }

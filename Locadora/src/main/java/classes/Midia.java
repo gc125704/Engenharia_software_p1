@@ -1,8 +1,12 @@
 package classes;
 
+import estados.Disponivel;
+import estados.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,7 +26,28 @@ public class Midia {
     private Estado reservado;
     private Estado danificado;
     
-    private Titulo titulo;
+     private Titulo titulo;
+   
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    public void setReserva(){
+        estado = reservado;
+    }
+
+    public String getTituloTemp() {
+        return tituloTemp;
+    }
+
+    public void setTituloTemp(String tituloTemp) {
+        this.tituloTemp = tituloTemp;
+    }
     
     private String tituloTemp;
     
@@ -35,15 +60,13 @@ public class Midia {
         this.id = id;
         this.titulo = titulo;
         this.tituloTemp = titulo.descricao;
-        
-        //Disponivel = new Disponivel(this);
+        estado = disponivel;
     }
     
     
     
     public void reservar(Cliente c, Midia m){
-        System.out.println("a midia " + m.tituloTemp + " foi reservada pelo cliente:");
-        c.MostraCliente(c);
+        estado.reservar(c, m);
     }
     
     public void emprestar(Cliente c, Midia m) throws ParseException{
