@@ -12,7 +12,7 @@ public class Cliente {
    /** @pdOid e3037fca-15a9-4d04-b05e-d05aaffb2b8b */
    private String cpf;
    /** @pdOid 87b7b7e9-1e72-463c-a7f9-59c86517e569 */
-   private Date dataNascimento;
+   private String dataNascimento;
    
    /** @pdOid d6167d39-b57f-4978-8801-3185f642120e */
    public void cadastrar(Cliente c) {
@@ -29,7 +29,7 @@ public class Cliente {
    System.out.println("usuario excluido com sucesso");
    }
 
-    public Cliente(int id, String nome, String cpf, Date dataNascimento) {
+    public Cliente(int id, String nome, String cpf, String dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -55,7 +55,7 @@ public class Cliente {
         return cpf;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 

@@ -4,6 +4,7 @@
  */
 package classes;
 
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -13,9 +14,9 @@ import java.util.Date;
 public class Emprestimo {
     private int id;
     
-    private Date Data;
+    private String Data;
     
-    private Date dataPrevista;
+    private String dataPrevista;
     
     private Cliente cliente;
     
@@ -23,7 +24,7 @@ public class Emprestimo {
     
     private Pagamento pagamento;
 
-    public Emprestimo(int id, Date Data, Date dataPrevista, Cliente cliente, Midia midia, Pagamento pagamento) {
+    public Emprestimo(int id, String Data, String dataPrevista, Cliente cliente, Midia midia, Pagamento pagamento) {
         this.id = id;
         this.Data = Data;
         this.dataPrevista = dataPrevista;
@@ -37,6 +38,13 @@ public class Emprestimo {
     Emprestimo(int i, Date data, Date dataPrevista, Cliente c, Midia m) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public void emprestar() throws ParseException {
+        
+        midia.emprestar(cliente);
+    }
+    
+    
     
     
     
