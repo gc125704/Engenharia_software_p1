@@ -12,12 +12,25 @@ public class Titulo {
     * 
     * @pdOid b07d48ea-20a7-4a9c-8c2a-7c68d8f54eb5 */
    
+   public Titulo() {
+        
+   
+   }
+   
    public Titulo(String descricao) {
         this.descricao = descricao;
    
    }
 
     public void cadastrar() {
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
    
    /** @pdOid bbaa3d97-4989-477f-8435-5977142092de */

@@ -32,6 +32,17 @@ public class app {
         System.out.println("digite uma opcao");
     }
 
+    public static void mostrarTitulosCadastrados(ArrayList<Titulo> titulos) {
+
+        System.out.println("+titulos diponiveis para midias+");
+        Titulo titulo = new Titulo();
+        for (int i = 0; i < titulos.size(); i++) {
+            titulo = titulos.get(i);
+            System.out.println(i + "-nome: " + titulo.getDescricao());
+        }
+        System.out.println("------------------------------");
+    }
+
     public Date pegaData(String temp) throws ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date data = formato.parse(temp);
@@ -50,6 +61,8 @@ public class app {
             Scanner scan = new Scanner(System.in);
 
             ArrayList<Cliente> clientes = new ArrayList<>();
+            ArrayList<Titulo> titulos = new ArrayList<>();
+            ArrayList<Midia> midias = new ArrayList<>();
 
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             data = formato.parse("23/11/2015");
@@ -63,6 +76,11 @@ public class app {
             System.out.println("--------------");
 
             Titulo titulo = new Titulo("titulo1");
+            titulos.add(titulo);
+            Titulo titulo2 = new Titulo("titulo2");
+            titulos.add(titulo2);
+            Titulo titulo3 = new Titulo("titulo3");
+            titulos.add(titulo3);
 
             Midia m = new Midia(0, titulo);
             id++;
@@ -82,6 +100,19 @@ public class app {
                         System.out.println("digite a data de nascimento");
                         String temp = scan.nextLine();
                         //data = pegaData(temp);
+                        break;
+                    case 2:
+                        mostrarTitulosCadastrados(titulos);
+                        System.out.println("digite o numero do titulo para"
+                                + " cadastrar na midia");
+                        int tempInt = scan.nextInt();
+                        Titulo tituloTemp = titulos.get(tempInt);
+                        Midia midia = new Midia(id,tituloTemp);
+                        midia.cadastrar();
+                        midias.add(midia);
+                        id++;
+                        break;
+                    case 3:
                         break;
 
                 }

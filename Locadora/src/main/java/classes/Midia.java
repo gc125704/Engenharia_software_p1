@@ -53,11 +53,20 @@ public class Midia {
     
     public void cadastrar(){
         
-        System.out.println("");
+        System.out.println("a midia " + this.tituloTemp + " foi cadastrada com "
+                + "sucesso");
+        System.out.println("------------------------------------");
     }
 
     public Midia(int id, Titulo titulo) {
         this.id = id;
+        this.titulo = titulo;
+        this.tituloTemp = titulo.descricao;
+        estado = disponivel;
+    }
+    
+    public Midia(Midia midia, Titulo titulo) {
+        this.id = midia.id;
         this.titulo = titulo;
         this.tituloTemp = titulo.descricao;
         estado = disponivel;
