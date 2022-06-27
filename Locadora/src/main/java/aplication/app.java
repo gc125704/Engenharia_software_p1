@@ -24,10 +24,12 @@ public class app {
         System.out.println("1-cadastrar cliente");
         System.out.println("2-cadastrar midia");
         System.out.println("3-reservar midia");
-        System.out.println("4-devolver midia");
-        System.out.println("5-excluir cliente");
-        System.out.println("6-excluir midia");
-        System.out.println("7-sair");
+        System.out.println("4-cancelar reserva");
+        System.out.println("5-devolver midia");
+        System.out.println("6-devolver midia danificada");
+        System.out.println("7-excluir cliente");
+        System.out.println("8-excluir midia");
+        System.out.println("9-sair");
         System.out.println("--------------------");
         System.out.println("digite uma opcao");
     }
@@ -50,12 +52,28 @@ public class app {
         return data;
     }
 
+    public void mostarMidias(ArrayList<Midia> midias) {
+        System.out.println("+Midias cadastradas no sistema+");
+        for (int i = 0; i < midias.size(); i++) {
+            System.out.println(i + "-nome: " + midias.get(i).getTituloTemp());
+        }
+    }
+
+    public static void mostarClientes(ArrayList<Cliente> clientes) {
+        System.out.println("+Clientes cadastradas no sistema+");
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println(i + "-nome: " + clientes.get(i).getNome());
+        }
+    }
+
     public static void main(String[] args) throws ParseException {
 
-        int opcao = 0;
+        int opcao = 999;
         int id = 0;
         int idCliente = 0;
         Date data;
+
+        int tempInt, tempInt2;
 
         Scanner scan = new Scanner(System.in);
 
@@ -63,8 +81,6 @@ public class app {
         ArrayList<Titulo> titulos = new ArrayList<>();
         ArrayList<Midia> midias = new ArrayList<>();
 
-//        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-//        data = formato.parse("23/11/2015");
         Cliente cli = new Cliente(1, "Robson", "123456", "23/11/2015");
 
         cli.cadastrar(cli);
@@ -85,7 +101,7 @@ public class app {
 
         //m.reservar(cli);
         //m.devolver(cli);
-        while (opcao != 7) {
+        while (opcao != 0) {
             menu();
             opcao = scan.nextInt();
             switch (opcao) {
@@ -98,8 +114,8 @@ public class app {
                     String CPF = s.nextLine();
                     System.out.println("digite a data de nascimento");
                     String temp = s.nextLine();
-                    Cliente clienteTemp = new Cliente(idCliente,tempString,
-                            CPF,temp);
+                    Cliente clienteTemp = new Cliente(idCliente, tempString,
+                            CPF, temp);
                     clientes.add(clienteTemp);
                     idCliente++;
                     break;
@@ -107,7 +123,7 @@ public class app {
                     mostrarTitulosCadastrados(titulos);
                     System.out.println("digite o numero do titulo para"
                             + " cadastrar na midia");
-                    int tempInt = scan.nextInt();
+                    tempInt = scan.nextInt();
                     Titulo tituloTemp = titulos.get(tempInt);
                     Midia midia = new Midia(id, tituloTemp);
                     midia.cadastrar();
@@ -115,6 +131,15 @@ public class app {
                     id++;
                     break;
                 case 3:
+                    mostrarTitulosCadastrados(titulos);
+                    System.out.println("digite o numero do titulo que voce"
+                            + "deseja reservar");
+                    tempInt = scan.nextInt();
+                    mostarClientes(clientes);
+                    System.out.println("digite o numero referente ao cliente"
+                            + "que ira fazer a reserva");
+                    tempInt2 = scan.nextInt();
+                    midias.get(tempInt).reservar(clientes.get(tempInt2));
                     break;
 
             }
