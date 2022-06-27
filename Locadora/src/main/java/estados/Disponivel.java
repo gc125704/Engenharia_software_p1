@@ -39,4 +39,9 @@ public class Disponivel implements Estado {
         System.out.println(" Mídia devolvida com sucesso ");
     }
 
+    @Override
+    public void cancelar(Cliente c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

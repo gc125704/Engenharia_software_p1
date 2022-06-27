@@ -17,5 +17,7 @@ public interface Estado {
    void reservar(Cliente c);
    /** @pdOid 3b9cb7a5-4c31-40e6-b374-e1ceaf74b9db */
    void devolver(Cliente c);
+   
+   void cancelar(Cliente c);
 
 }

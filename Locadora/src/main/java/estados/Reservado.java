@@ -44,6 +44,7 @@ public class Reservado implements Estado {
         System.out.println("Reserva cancelada com sucesso");
         midia.setEstado(midia.getDisponivel());
     }
+    
 
     @Override
     public void reservar(Cliente cliente) {

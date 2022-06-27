@@ -91,12 +91,13 @@ public class app {
             switch (opcao) {
 
                 case 1:
+                    Scanner s = new Scanner(System.in);
                     System.out.println("digite o nome");
-                    String tempString = scan.nextLine();
+                    String tempString = s.nextLine();
                     System.out.println("digite o CPF");
-                    String CPF = scan.nextLine();
+                    String CPF = s.nextLine();
                     System.out.println("digite a data de nascimento");
-                    String temp = scan.nextLine();
+                    String temp = s.nextLine();
                     Cliente clienteTemp = new Cliente(idCliente,tempString,
                             CPF,temp);
                     clientes.add(clienteTemp);

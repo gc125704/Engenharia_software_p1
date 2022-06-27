@@ -4,6 +4,7 @@
  */
 package classes;
 
+import Statege.Pagamento;
 import java.text.ParseException;
 import java.util.Date;
 
