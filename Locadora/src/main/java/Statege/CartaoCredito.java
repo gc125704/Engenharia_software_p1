@@ -4,6 +4,8 @@
  */
 package Statege;
 
+import classes.Devolucao;
+
 /**
  *
  * @author gabriel
@@ -11,8 +13,10 @@ package Statege;
 public class CartaoCredito implements Pagamento{
 
     private String numero;
+    Devolucao devolucao;
     
-    public CartaoCredito() {
+    public CartaoCredito(Devolucao devolucao) {
+        this.devolucao = devolucao;
     }
 
     @Override

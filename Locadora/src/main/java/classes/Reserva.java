@@ -4,6 +4,7 @@
  */
 package classes;
 
+import Statege.CartaoCredito;
 import Statege.Pagamento;
 
 /**
@@ -11,16 +12,19 @@ import Statege.Pagamento;
  * @author gabriel
  */
 public class Reserva {
+
     private String dataReserva;
-    
+
     private Cliente cliente;
-    
-    private Pagamento p;
-    
-    private Pagamento dinheiro;
-    
-    public void pagar(){
-        p.pagar();
+
+    private Midia midia;
+
+    public Midia getMidia() {
+        return midia;
+    }
+
+    public void setMidia(Midia midia) {
+        this.midia = midia;
     }
 
     public String getDataReserva() {
@@ -39,15 +43,10 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public Pagamento getDinheiro() {
-        return dinheiro;
+    public Reserva(String dataReserva, Cliente cliente, Midia midia) {
+        this.dataReserva = dataReserva;
+        this.cliente = cliente;
+        this.midia = midia;
     }
 
-    public void setPagamento(Pagamento pagamento) {
-        this.p = pagamento;
-    }
-    
-    
-    
-    
 }

@@ -28,6 +28,7 @@ public class app {
         System.out.println("6-devolver midia danificada");
         System.out.println("7-excluir cliente");
         System.out.println("8-excluir midia");
+        System.out.println("9-emprestar midia");
         System.out.println("0-sair");
         System.out.println("--------------------");
         System.out.println("digite uma opcao");
@@ -78,8 +79,11 @@ public class app {
     public static void main(String[] args) throws ParseException {
 
         int opcao = 999;
-        int id = 0;
+        int id = 0; //midia
         int idCliente = 0;
+        int idReserva = 0;
+        int idEmprestimo = 0;
+        int idDevolucao = 0;
         Date data;
 
         int tempInt, tempInt2;
@@ -109,8 +113,7 @@ public class app {
         midias.add(m);
         id++;
 
-        //m.reservar(cli);
-        //m.devolver(cli);
+        
         while (opcao != 0) {
             menu();
             opcao = scan.nextInt();
@@ -202,6 +205,13 @@ public class app {
                     tempInt = scan.nextInt();
                     midias.remove(tempInt);
                     mostrarMidias(midias);
+                    break;
+                case 9:
+                    System.out.println("selecione a midia que voce deseja "
+                            + "realizar um emprestimo");
+                    mostrarMidias(midias);
+                    tempInt = scan.nextInt();
+                    midias.get(tempInt).emprestar(cli);
                     break;
             }
         }

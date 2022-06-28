@@ -6,7 +6,6 @@ package classes;
 
 import Statege.Pagamento;
 import java.text.ParseException;
-import java.util.Date;
 
 /**
  *
@@ -31,15 +30,9 @@ public class Emprestimo {
         this.dataPrevista = dataPrevista;
         this.cliente = cliente;
         this.midia = midia;
-        
-        
-        
     }
 
-    Emprestimo(int i, Date data, Date dataPrevista, Cliente c, Midia m) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+   
     public void emprestar() throws ParseException {
         
         midia.emprestar(cliente);
