@@ -8,11 +8,11 @@ package Statege;
  *
  * @author gabriel
  */
-public class CartaCredito implements Pagamento{
+public class CartaoCredito implements Pagamento{
 
     private String numero;
     
-    public CartaCredito() {
+    public CartaoCredito() {
     }
 
     @Override
