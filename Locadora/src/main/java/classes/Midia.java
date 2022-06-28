@@ -105,5 +105,9 @@ public class Midia {
     public void devolver(Cliente c) {
         estado.devolver(c);
     }
+    
+    public void cancelar(Cliente c){
+        estado.cancelar(c);
+    }
 
 }

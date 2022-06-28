@@ -20,7 +20,8 @@ public class Disponivel implements Estado {
 
     @Override
     public void reservar(Cliente cliente) {
-        System.out.println("a midia " + midia.getTituloTemp() + " foi reservada pelo cliente:");
+        System.out.println("a midia " + midia.getTituloTemp() + 
+                " foi reservada pelo cliente:");
         cliente.MostraCliente(cliente);
         midia.setEstado(midia.getReservado());
         
@@ -41,7 +42,8 @@ public class Disponivel implements Estado {
 
     @Override
     public void cancelar(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("ERRO: midia disponivel, nao ha nada a ser "
+                + "cancelado");
     }
 
 }

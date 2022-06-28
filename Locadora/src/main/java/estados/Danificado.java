@@ -21,7 +21,7 @@ public class Danificado implements Estado {
      */
     @Override
     public void emprestar(Cliente c) {
-        System.out.println("Impossivel emprestar, mídia danificada");
+        System.out.println("ERRO: Impossivel emprestar, mídia danificada");
     }
 
     /**
@@ -35,12 +35,12 @@ public class Danificado implements Estado {
 
     @Override
     public void reservar(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("ERRO: Impossivel reservar uma mídia danificada");
     }
 
     @Override
     public void cancelar(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("ERRO: midia danifica, nao ha o que cancelar ");
     }
 
 }

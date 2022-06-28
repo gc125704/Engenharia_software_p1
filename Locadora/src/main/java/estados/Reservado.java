@@ -43,6 +43,7 @@ public class Reservado implements Estado {
     public void cancelar(Cliente cliente) {
         System.out.println("Reserva cancelada com sucesso");
         midia.setEstado(midia.getDisponivel());
+       
     }
     
 

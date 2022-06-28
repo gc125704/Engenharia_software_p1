@@ -24,6 +24,7 @@ public class Emprestado implements Estado {
    @Override
    public void devolver(Cliente cliente) {
    System.out.println("Mídia devolvida com sucesso");
+   
    }
 
     @Override
@@ -33,7 +34,8 @@ public class Emprestado implements Estado {
 
     @Override
     public void cancelar(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("ERRO: nao se pode cancelar o emprestimo, para"
+                + " finaliza-lo basta realizar uma devolucao");   
     }
 
 }

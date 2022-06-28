@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import javax.xml.crypto.Data;
 
 /**
  *
@@ -20,7 +19,7 @@ import javax.xml.crypto.Data;
 public class app {
 
     public static void menu() {
-        System.out.println("+MENU+");
+        System.out.println("+++++++MENU++++++++");
         System.out.println("1-cadastrar cliente");
         System.out.println("2-cadastrar midia");
         System.out.println("3-reservar midia");
@@ -29,7 +28,7 @@ public class app {
         System.out.println("6-devolver midia danificada");
         System.out.println("7-excluir cliente");
         System.out.println("8-excluir midia");
-        System.out.println("9-sair");
+        System.out.println("0-sair");
         System.out.println("--------------------");
         System.out.println("digite uma opcao");
     }
@@ -52,17 +51,25 @@ public class app {
         return data;
     }
 
-    public void mostarMidias(ArrayList<Midia> midias) {
+    public static void mostrarMidias(ArrayList<Midia> midias) {
         System.out.println("+Midias cadastradas no sistema+");
-        for (int i = 0; i < midias.size(); i++) {
-            System.out.println(i + "-nome: " + midias.get(i).getTituloTemp());
+        if (midias.size() > 0) {
+            for (int i = 0; i < midias.size(); i++) {
+                System.out.println(i + "-nome: " + midias.get(i).getTituloTemp());
+            }
+        } else {
+            System.out.println("nao ha midias cadastradas no sistema");
         }
     }
 
-    public static void mostarClientes(ArrayList<Cliente> clientes) {
+    public static void mostrarClientes(ArrayList<Cliente> clientes) {
         System.out.println("+Clientes cadastradas no sistema+");
-        for (int i = 0; i < clientes.size(); i++) {
-            System.out.println(i + "-nome: " + clientes.get(i).getNome());
+        if (clientes.size() > 0) {
+            for (int i = 0; i < clientes.size(); i++) {
+                System.out.println(i + "-nome: " + clientes.get(i).getNome());
+            }
+        } else {
+            System.out.println("nao ha clientes cadastrados no sistema");
         }
     }
 
@@ -97,6 +104,7 @@ public class app {
         titulos.add(titulo3);
 
         Midia m = new Midia(0, titulo);
+        midias.add(m);
         id++;
 
         //m.reservar(cli);
@@ -106,6 +114,8 @@ public class app {
             opcao = scan.nextInt();
             switch (opcao) {
 
+                case 0:
+                    break;
                 case 1:
                     Scanner s = new Scanner(System.in);
                     System.out.println("digite o nome");
@@ -131,15 +141,65 @@ public class app {
                     id++;
                     break;
                 case 3:
-                    mostrarTitulosCadastrados(titulos);
-                    System.out.println("digite o numero do titulo que voce"
+                    mostrarMidias(midias);
+                    System.out.println("digite o numero da midia que voce"
                             + "deseja reservar");
                     tempInt = scan.nextInt();
-                    mostarClientes(clientes);
+                    mostrarClientes(clientes);
                     System.out.println("digite o numero referente ao cliente"
                             + "que ira fazer a reserva");
                     tempInt2 = scan.nextInt();
                     midias.get(tempInt).reservar(clientes.get(tempInt2));
+                    break;
+                case 4:
+                    System.out.println("escolha o numero da midia cuja reserva "
+                            + "sera cancelada");
+                    mostrarMidias(midias);
+                    tempInt = scan.nextInt();
+                    midias.get(tempInt).cancelar(cli);
+                    break;
+                case 5:
+                    System.out.println("escolha o numero da midia que voce "
+                            + "deseja fazer a devolucao");
+                    mostrarMidias(midias);
+                    tempInt = scan.nextInt();
+                    System.out.println("escolha o cliente que ira fazer a "
+                            + "devolucao");
+                    mostrarClientes(clientes);
+                    tempInt2 = scan.nextInt();
+                    midias.get(tempInt).devolver(clientes.get(tempInt2));
+                    break;
+                case 6:
+                    System.out.println("escolha o numero da midia que voce "
+                            + "deseja fazer a devolucao");
+                    mostrarMidias(midias);
+                    tempInt = scan.nextInt();
+                    System.out.println("escolha o cliente que ira fazer a "
+                            + "devolucao");
+                    mostrarClientes(clientes);
+                    tempInt2 = scan.nextInt();
+                    if (midias.get(tempInt).getEstado() == midias.get(tempInt).getEmprestado()) {
+                        midias.get(tempInt).setEstado(midias.get(tempInt).getDanificado());
+                        midias.get(tempInt).devolver(clientes.get(tempInt2));
+                    } else {
+                        midias.get(tempInt).devolver(clientes.get(tempInt2));
+                    }
+                    break;
+                case 7:
+                    System.out.println("escolha o numero do cliente que sera "
+                            + "removido");
+                    mostrarClientes(clientes);
+                    tempInt = scan.nextInt();
+                    clientes.remove(tempInt);
+                    mostrarClientes(clientes);
+                    break;
+                case 8:
+                    System.out.println("escolha o numero da midia que sera "
+                            + "removida");
+                    mostrarMidias(midias);
+                    tempInt = scan.nextInt();
+                    midias.remove(tempInt);
+                    mostrarMidias(midias);
                     break;
 
             }
