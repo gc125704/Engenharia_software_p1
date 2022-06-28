@@ -16,7 +16,7 @@ public class Emprestado implements Estado {
     
     @Override
    public void emprestar(Cliente cliente) {
-   System.out.println("Impossivel emprestar, mídia ja esta emprestada");
+   System.out.println("ERRO: impossivel emprestar, mídia ja esta emprestada");
    }
    
    
@@ -29,7 +29,7 @@ public class Emprestado implements Estado {
 
     @Override
     public void reservar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("ERRO: impossivel reservar a midia emprestada");
     }
 
     @Override

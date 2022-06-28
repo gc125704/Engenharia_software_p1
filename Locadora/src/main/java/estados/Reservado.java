@@ -25,7 +25,8 @@ public class Reservado implements Estado {
      */
     @Override
     public void emprestar(Cliente cliente) {
-        System.out.println("emprestimo realizado com sucesso");
+        System.out.println("emprestimo da midia"+ midia.getTituloTemp() +
+                " realizado com sucesso pelo cliente "+ cliente.getNome());
         midia.setEstado(midia.getEmprestado());
     }
 
@@ -34,7 +35,7 @@ public class Reservado implements Estado {
      */
     @Override
     public void devolver(Cliente cliente) {
-        System.out.println("Impossivel devolver mídia ja reservada");
+        System.out.println("ERRO: impossivel devolver mídia ja reservada");
     }
 
     /**
@@ -50,7 +51,7 @@ public class Reservado implements Estado {
     @Override
     public void reservar(Cliente cliente) {
         System.out.println("ERRO: a midia " + midia.getTituloTemp() + "nao pode ser"
-                + " emprestada para o cliente " + cliente.getNome() + " pois ja esta"
+                + " reservada para o cliente " + cliente.getNome() + " pois ja esta"
                 + "reservada");
         midia.setEstado(midia.getReservado());
     }

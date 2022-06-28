@@ -15,6 +15,10 @@ public class Midia {
 
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     private Estado emprestado;
     private Estado disponivel;
     private Estado reservado;
@@ -91,14 +95,7 @@ public class Midia {
     }
 
     public void emprestar(Cliente c) throws ParseException {
-        //System.out.println("a midia " + m.tituloTemp + " foi emprestada pelo cliente:");
-        //c.MostraCliente(c);
-
-        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        //Date data = formato.parse("22/06/2022");
-        //Date dataPrevista = formato.parse("22/07/2022");
-        //Emprestimo emprestimo = new Emprestimo(0,data,dataPrevista,c,m);
-        //this.estado = Reservado;
+     
         estado.emprestar(c);
     }
 

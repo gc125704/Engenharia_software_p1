@@ -55,7 +55,9 @@ public class app {
         System.out.println("+Midias cadastradas no sistema+");
         if (midias.size() > 0) {
             for (int i = 0; i < midias.size(); i++) {
-                System.out.println(i + "-nome: " + midias.get(i).getTituloTemp());
+                System.out.println(i +
+                        "-nome: " + midias.get(i).getTituloTemp()
+                + " id:" + midias.get(i).getId());
             }
         } else {
             System.out.println("nao ha midias cadastradas no sistema");
@@ -201,7 +203,6 @@ public class app {
                     midias.remove(tempInt);
                     mostrarMidias(midias);
                     break;
-
             }
         }
 
