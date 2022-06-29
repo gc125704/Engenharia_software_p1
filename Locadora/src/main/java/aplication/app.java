@@ -257,9 +257,10 @@ public class app {
 
                     System.out.println("selecione a midia que voce deseja "
                             + "realizar um emprestimo");
+                    //System.out.println(midias.size());
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    if (tempInt > midias.size() || tempInt > midias.size()) {
+                    if (tempInt-1 < midias.size() || tempInt+1 > midias.size() ) {
                         System.out.println("digite um valor valido de posição "
                                 + "da midia");
                     } else {
