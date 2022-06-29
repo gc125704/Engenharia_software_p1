@@ -67,7 +67,7 @@ public class Midia {
 
     public void cadastrar() {
 
-        System.out.println("a midia " + this.tituloTemp + " foi cadastrada com "
+        System.out.println("A midia " + this.tituloTemp + " foi cadastrada com "
                 + "sucesso");
         System.out.println("------------------------------------");
     }

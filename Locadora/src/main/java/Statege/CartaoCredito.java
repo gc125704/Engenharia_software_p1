@@ -22,7 +22,7 @@ public class CartaoCredito implements Pagamento{
     @Override
     public void pagar() {
        System.out.println("O pagamento da midia foi realizado com sucesso "
-                + "usando dinheiro");
+                + "usando Cartão de Crédito");
     }   
     
     

@@ -18,7 +18,7 @@ public class Disponivel implements Estado {
 
     @Override
     public void reservar(Cliente cliente) {
-        System.out.println("a midia " + midia.getTituloTemp()
+        System.out.println("A midia " + midia.getTituloTemp()
                 + " foi reservada pelo cliente:");
         cliente.MostraCliente(cliente);
         midia.setEstado(midia.getReservado());
@@ -30,7 +30,7 @@ public class Disponivel implements Estado {
      */
     @Override
     public void emprestar(Cliente cliente) {
-        System.out.println("a midia " + midia.getTituloTemp()
+        System.out.println("A midia " + midia.getTituloTemp()
                 + " foi emprestada pelo cliente:");
         cliente.MostraCliente(cliente);
         midia.setEstado(midia.getEmprestado());
@@ -38,7 +38,7 @@ public class Disponivel implements Estado {
 
     @Override
     public void devolver(Cliente cliente) {
-        System.out.println("ERRO: nao ha como devolver uma midia disponivel ");
+        System.out.println("ERRO: não ha como devolver uma midia disponivel ");
     }
 
     @Override

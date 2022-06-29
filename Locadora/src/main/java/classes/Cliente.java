@@ -16,17 +16,17 @@ public class Cliente {
    
    /** @pdOid d6167d39-b57f-4978-8801-3185f642120e */
    public void cadastrar(Cliente c) {
-   System.out.println("usuario "+c.nome+" Cadastrado com sucesso");
+   System.out.println("Usuario " + c.nome + " Cadastrado com sucesso");
    }
    
    /** @pdOid cee2ae01-c3c9-4b0b-850b-70d61b708bd1 */
    public void alterar() {
-   System.out.println(" usuario alterado com sucesso");
+   System.out.println("Usuario alterado com sucesso");
    }
    
    /** @pdOid 996e115c-20fa-44e7-9a92-e24a4f215e2d */
    public void excluir() {
-   System.out.println("usuario excluido com sucesso");
+   System.out.println("Usuario excluido com sucesso");
    }
 
     public Cliente(int id, String nome, String cpf, String dataNascimento) {
@@ -67,7 +67,7 @@ public class Cliente {
     }
 
     public void MostraCliente(Cliente c) {
-        System.out.println("nome: " + this.nome);
+        System.out.println("Nome: " + this.nome);
         
     }
     

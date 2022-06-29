@@ -25,7 +25,7 @@ public class Reservado implements Estado {
      */
     @Override
     public void emprestar(Cliente cliente) {
-        System.out.println("emprestimo da midia"+ midia.getTituloTemp() +
+        System.out.println("Emprestimo da midia"+ midia.getTituloTemp() +
                 " realizado com sucesso pelo cliente "+ cliente.getNome());
         midia.setEstado(midia.getEmprestado());
     }
