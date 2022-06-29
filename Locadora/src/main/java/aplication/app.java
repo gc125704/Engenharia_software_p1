@@ -74,7 +74,7 @@ public class app {
                 System.out.println(i + "-nome: " + clientes.get(i).getNome());
             }
         } else {
-            System.out.println("nao ha clientes cadastrados no sistema");
+            System.out.println("Não ha clientes cadastrados no sistema");
         }
     }
 
@@ -172,7 +172,7 @@ public class app {
                     break;
                 case 2:
                     mostrarTitulosCadastrados(titulos);
-                    System.out.println("digite o numero do titulo para"
+                    System.out.println("Digite o numero do titulo para"
                             + " cadastrar na midia");
                     tempInt = scan.nextInt();
                     if (tempInt < titulos.size() - 1 || tempInt > titulos.size()) {
@@ -188,14 +188,14 @@ public class app {
                     break;
                 case 3:
                     mostrarMidias(midias);
-                    System.out.println("digite o numero da midia que voce"
+                    System.out.println("Digite o numero da midia que voce "
                             + "deseja reservar");
                     tempInt = scan.nextInt();
                     if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
                         System.out.println("intervalo de midias invalido");
                     } else {
                         mostrarClientes(clientes);
-                        System.out.println("digite o numero referente ao cliente"
+                        System.out.println("digite o numero referente ao cliente "
                                 + "que ira fazer a reserva");
                         tempInt2 = scan.nextInt();
                         if (tempInt2 < clientes.size() - 1 || tempInt2 > clientes.size()) {
@@ -210,25 +210,25 @@ public class app {
 
                     break;
                 case 4:
-                    System.out.println("escolha o numero da midia cuja reserva "
+                    System.out.println("Escolha o numero da midia cuja reserva "
                             + "sera cancelada");
                     tempInt = scan.nextInt();
                     mostrarMidias(midias);
                     if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
-                        System.out.println("intervalo de midias invalido");
+                        System.out.println("Intervalo de midias invalido");
                     } else {
                         midias.get(tempInt).cancelar(cli);
                     }
                     break;
                 case 5:
-                    System.out.println("escolha o numero da midia que voce "
+                    System.out.println("Escolha o numero da midia que voce "
                             + "deseja fazer a devolucao");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
                     if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
-                        System.out.println("digite um intervalo de midias valido ");
+                        System.out.println("Digite um intervalo de midias valido ");
                     } else {
-                        System.out.println("escolha o cliente que ira fazer a "
+                        System.out.println("Escolha o cliente que ira fazer a "
                                 + "devolucao");
                         mostrarClientes(clientes);
                         tempInt2 = scan.nextInt();
@@ -236,7 +236,7 @@ public class app {
                             System.out.println("intervalo de clientes invalido");
                         } else {
                             midias.get(tempInt).devolver(clientes.get(tempInt2));
-                            System.out.println("escolha o metodo de pagamento: 1 para "
+                            System.out.println("Escolha o metodo de pagamento: 1 para "
                                     + " dinheiro e 2 para cartao de credito");
                             tempInt = scan.nextInt();
                             Devolucao devolucao = new Devolucao("28/06/2022", emprestimo);
@@ -253,19 +253,19 @@ public class app {
 
                     break;
                 case 6:
-                    System.out.println("escolha o numero da midia que voce "
+                    System.out.println("Escolha o numero da midia que voce "
                             + "deseja fazer a devolucao");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
                     if (tempInt < clientes.size() - 1 || tempInt > clientes.size()) {
-                        System.out.println("intervalo de midia invalido");
+                        System.out.println("Intervalo de midia invalido");
                     } else {
-                        System.out.println("escolha o cliente que ira fazer a "
+                        System.out.println("Escolha o cliente que ira fazer a "
                                 + "devolucao");
                         mostrarClientes(clientes);
                         tempInt2 = scan.nextInt();
                         if (tempInt2 < clientes.size() - 1 || tempInt2 > clientes.size()) {
-                            System.out.println("intervalo de clientes invalido");
+                            System.out.println("Intervalo de clientes invalido");
                         } else {
                             if (midias.get(tempInt).getEstado() == midias.get(tempInt).getEmprestado()) {
                                 midias.get(tempInt).setEstado(midias.get(tempInt).getDanificado());
@@ -279,14 +279,14 @@ public class app {
                     break;
                 case 7:
                     if (clientes.size() == 1) {
-                        System.out.println("o sistema deve ter pelo menos um cliente cadastrado no sistema");
+                        System.out.println("O sistema deve ter pelo menos um cliente cadastrado no sistema");
                     } else {
-                        System.out.println("escolha o numero do cliente que sera "
+                        System.out.println("Escolha o numero do cliente que sera "
                                 + "removido");
                         mostrarClientes(clientes);
                         tempInt = scan.nextInt();
                         if (tempInt < clientes.size() - 1 || tempInt > clientes.size()) {
-                            System.out.println("digite uma posicao de cliente valida");
+                            System.out.println("Digite uma posicao de cliente valida");
                         } else {
                             clientes.remove(tempInt);
                             System.out.println("cliente removido com sucesso");
@@ -296,31 +296,31 @@ public class app {
                     break;
                 case 8:
                     if (midias.size() == 1) {
-                        System.out.println("deve haver pelo menos uma midia cadastrada");
+                        System.out.println("Deve haver pelo menos uma midia cadastrada");
                     } else {
 
-                        System.out.println("escolha o numero da midia que sera "
+                        System.out.println("Escolha o numero da midia que sera "
                                 + "removida");
                         mostrarMidias(midias);
                         tempInt = scan.nextInt();
                         if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
-                            System.out.println("digite um valor valido de posição "
+                            System.out.println("Digite um valor valido de posição "
                                     + "da midia, valor do size " + midias.size());
                         } else {
                             midias.remove(tempInt);
-                            System.out.println("midia removida com sucesso");
+                            System.out.println("Midia removida com sucesso");
                         }
                     }
                     break;
                 case 9:
 
-                    System.out.println("selecione a midia que voce deseja "
+                    System.out.println("Selecione a midia que voce deseja "
                             + "realizar um emprestimo");
                     //System.out.println(midias.size());
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
                     if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
-                        System.out.println("digite um valor valido de posição "
+                        System.out.println("Digite um valor valido de posição "
                                 + "da midia, valor do size " + midias.size());
                     } else {
                         tempInt2 = achaReserva(reservas, midias.get(tempInt));
@@ -329,7 +329,7 @@ public class app {
                                     "29/06/2022", "06/07/2022", reservas.get(tempInt));
 
                         } else {
-                            System.out.println("escolha o numero do cliente que fara "
+                            System.out.println("Escolha o numero do cliente que fara "
                                     + "o emprestimo");
                             mostrarClientes(clientes);
                             tempInt2 = scan.nextInt();
