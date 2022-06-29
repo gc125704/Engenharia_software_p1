@@ -29,6 +29,8 @@ public class app {
         System.out.println("7-excluir cliente");
         System.out.println("8-excluir midia");
         System.out.println("9-emprestar midia");
+        System.out.println("10-mostar cliente cadastrados");
+        System.out.println("11-mostar midias cadastradas");
         System.out.println("0-sair");
         System.out.println("--------------------");
         System.out.println("digite uma opcao");
@@ -66,7 +68,7 @@ public class app {
     }
 
     public static void mostrarClientes(ArrayList<Cliente> clientes) {
-        System.out.println("+Clientes cadastradas no sistema+");
+        System.out.println("+Clientes cadastrados no sistema+");
         if (clientes.size() > 0) {
             for (int i = 0; i < clientes.size(); i++) {
                 System.out.println(i + "-nome: " + clientes.get(i).getNome());
@@ -226,7 +228,7 @@ public class app {
                     mostrarClientes(clientes);
                     tempInt = scan.nextInt();
                     clientes.remove(tempInt);
-                    mostrarClientes(clientes);
+                    System.out.println("cliente removido com sucesso");
                     break;
                 case 8:
                     System.out.println("escolha o numero da midia que sera "
@@ -234,7 +236,7 @@ public class app {
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
                     midias.remove(tempInt);
-                    mostrarMidias(midias);
+                    System.out.println("midia removida com sucesso");
                     break;
                 case 9:
 
@@ -258,6 +260,12 @@ public class app {
                     }
                     idEmprestimo++;
                     midias.get(tempInt).emprestar(cli);
+                    break;
+                case 10:
+                    mostrarClientes(clientes);
+                    break;
+                case 11:
+                    mostrarMidias(midias);
                     break;
             }
         }
