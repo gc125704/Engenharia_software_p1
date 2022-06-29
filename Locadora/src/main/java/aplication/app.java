@@ -160,98 +160,157 @@ public class app {
                     String CPF = s.nextLine();
                     System.out.println("digite a data de nascimento");
                     String temp = s.nextLine();
-                    Cliente clienteTemp = new Cliente(idCliente, tempString,
-                            CPF, temp);
-                    clientes.add(clienteTemp);
-                    idCliente++;
+                    if (tempString == "" || CPF == "" || temp == "") {
+                        System.out.println("ERRO: favor preencher todos os campos");
+                    } else {
+                        Cliente clienteTemp = new Cliente(idCliente, tempString,
+                                CPF, temp);
+                        clientes.add(clienteTemp);
+                        idCliente++;
+                    }
+
                     break;
                 case 2:
                     mostrarTitulosCadastrados(titulos);
                     System.out.println("digite o numero do titulo para"
                             + " cadastrar na midia");
                     tempInt = scan.nextInt();
-                    Titulo tituloTemp = titulos.get(tempInt);
-                    Midia midia = new Midia(id, tituloTemp);
-                    midia.cadastrar();
-                    midias.add(midia);
-                    id++;
+                    if (tempInt < titulos.size() - 1 || tempInt > titulos.size()) {
+                        System.out.println("ERRO: no valor digitado nao existe titulo cadastrado");
+                    } else {
+                        Titulo tituloTemp = titulos.get(tempInt);
+                        Midia midia = new Midia(id, tituloTemp);
+                        midia.cadastrar();
+                        midias.add(midia);
+                        id++;
+                    }
+
                     break;
                 case 3:
                     mostrarMidias(midias);
                     System.out.println("digite o numero da midia que voce"
                             + "deseja reservar");
                     tempInt = scan.nextInt();
-                    mostrarClientes(clientes);
-                    System.out.println("digite o numero referente ao cliente"
-                            + "que ira fazer a reserva");
-                    tempInt2 = scan.nextInt();
-                    midias.get(tempInt).reservar(clientes.get(tempInt2));
-                    Reserva reserva = new Reserva("28/06/2022",
-                            clientes.get(tempInt2), midias.get(tempInt));
-                    reservas.add(reserva);
+                    if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
+                        System.out.println("intervalo de midias invalido");
+                    } else {
+                        mostrarClientes(clientes);
+                        System.out.println("digite o numero referente ao cliente"
+                                + "que ira fazer a reserva");
+                        tempInt2 = scan.nextInt();
+                        if (tempInt2 < clientes.size() - 1 || tempInt2 > clientes.size()) {
+                            System.out.println("intervalo de clientes invalido");
+                        } else {
+                            midias.get(tempInt).reservar(clientes.get(tempInt2));
+                            Reserva reserva = new Reserva("28/06/2022",
+                                    clientes.get(tempInt2), midias.get(tempInt));
+                            reservas.add(reserva);
+                        }
+                    }
+
                     break;
                 case 4:
                     System.out.println("escolha o numero da midia cuja reserva "
                             + "sera cancelada");
-                    mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    midias.get(tempInt).cancelar(cli);
+                    mostrarMidias(midias);
+                    if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
+                        System.out.println("intervalo de midias invalido");
+                    } else {
+                        midias.get(tempInt).cancelar(cli);
+                    }
                     break;
                 case 5:
                     System.out.println("escolha o numero da midia que voce "
                             + "deseja fazer a devolucao");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    System.out.println("escolha o cliente que ira fazer a "
-                            + "devolucao");
-                    mostrarClientes(clientes);
-                    tempInt2 = scan.nextInt();
-                    midias.get(tempInt).devolver(clientes.get(tempInt2));
-                    System.out.println("escolha o metodo de pagamento: 1 para "
-                            + " dinheiro e 2 para cartao de credito");
-                    tempInt = scan.nextInt();
-                    Devolucao devolucao = new Devolucao("28/06/2022", emprestimo);
-                    if (tempInt == 1) {
-
-                        devolucao.setPagamento(devolucao.getDinheiro());
-
+                    if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
+                        System.out.println("digite um intervalo de midias valido ");
                     } else {
-                        devolucao.setPagamento(devolucao.getCartaoCredito());
+                        System.out.println("escolha o cliente que ira fazer a "
+                                + "devolucao");
+                        mostrarClientes(clientes);
+                        tempInt2 = scan.nextInt();
+                        if (tempInt2 < clientes.size() - 1 || tempInt2 > clientes.size()) {
+                            System.out.println("intervalo de clientes invalido");
+                        } else {
+                            midias.get(tempInt).devolver(clientes.get(tempInt2));
+                            System.out.println("escolha o metodo de pagamento: 1 para "
+                                    + " dinheiro e 2 para cartao de credito");
+                            tempInt = scan.nextInt();
+                            Devolucao devolucao = new Devolucao("28/06/2022", emprestimo);
+                            if (tempInt == 1) {
+
+                                devolucao.setPagamento(devolucao.getDinheiro());
+
+                            } else {
+                                devolucao.setPagamento(devolucao.getCartaoCredito());
+                            }
+                            devolucao.pagar();
+                        }
                     }
-                    devolucao.pagar();
-                    //emprestimo.pagar();
+
                     break;
                 case 6:
                     System.out.println("escolha o numero da midia que voce "
                             + "deseja fazer a devolucao");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    System.out.println("escolha o cliente que ira fazer a "
-                            + "devolucao");
-                    mostrarClientes(clientes);
-                    tempInt2 = scan.nextInt();
-                    if (midias.get(tempInt).getEstado() == midias.get(tempInt).getEmprestado()) {
-                        midias.get(tempInt).setEstado(midias.get(tempInt).getDanificado());
-                        midias.get(tempInt).devolver(clientes.get(tempInt2));
+                    if (tempInt < clientes.size() - 1 || tempInt > clientes.size()) {
+                        System.out.println("intervalo de midia invalido");
                     } else {
-                        midias.get(tempInt).devolver(clientes.get(tempInt2));
+                        System.out.println("escolha o cliente que ira fazer a "
+                                + "devolucao");
+                        mostrarClientes(clientes);
+                        tempInt2 = scan.nextInt();
+                        if (tempInt2 < clientes.size() - 1 || tempInt2 > clientes.size()) {
+                            System.out.println("intervalo de clientes invalido");
+                        } else {
+                            if (midias.get(tempInt).getEstado() == midias.get(tempInt).getEmprestado()) {
+                                midias.get(tempInt).setEstado(midias.get(tempInt).getDanificado());
+                                midias.get(tempInt).devolver(clientes.get(tempInt2));
+                            } else {
+                                midias.get(tempInt).devolver(clientes.get(tempInt2));
+                            }
+                        }
                     }
+
                     break;
                 case 7:
-                    System.out.println("escolha o numero do cliente que sera "
-                            + "removido");
-                    mostrarClientes(clientes);
-                    tempInt = scan.nextInt();
-                    clientes.remove(tempInt);
-                    System.out.println("cliente removido com sucesso");
+                    if (clientes.size() == 1) {
+                        System.out.println("o sistema deve ter pelo menos um cliente cadastrado no sistema");
+                    } else {
+                        System.out.println("escolha o numero do cliente que sera "
+                                + "removido");
+                        mostrarClientes(clientes);
+                        tempInt = scan.nextInt();
+                        if (tempInt < clientes.size() - 1 || tempInt > clientes.size()) {
+                            System.out.println("digite uma posicao de cliente valida");
+                        } else {
+                            clientes.remove(tempInt);
+                            System.out.println("cliente removido com sucesso");
+                        }
+                    }
+
                     break;
                 case 8:
-                    System.out.println("escolha o numero da midia que sera "
-                            + "removida");
-                    mostrarMidias(midias);
-                    tempInt = scan.nextInt();
-                    midias.remove(tempInt);
-                    System.out.println("midia removida com sucesso");
+                    if (midias.size() == 1) {
+                        System.out.println("deve haver pelo menos uma midia cadastrada");
+                    } else {
+
+                        System.out.println("escolha o numero da midia que sera "
+                                + "removida");
+                        mostrarMidias(midias);
+                        tempInt = scan.nextInt();
+                        if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
+                            System.out.println("digite um valor valido de posição "
+                                    + "da midia, valor do size " + midias.size());
+                        } else {
+                            midias.remove(tempInt);
+                            System.out.println("midia removida com sucesso");
+                        }
+                    }
                     break;
                 case 9:
 
@@ -260,9 +319,9 @@ public class app {
                     //System.out.println(midias.size());
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    if (tempInt-1 < midias.size() || tempInt+1 > midias.size() ) {
+                    if (tempInt < midias.size() - 1 || tempInt > midias.size()) {
                         System.out.println("digite um valor valido de posição "
-                                + "da midia");
+                                + "da midia, valor do size " + midias.size());
                     } else {
                         tempInt2 = achaReserva(reservas, midias.get(tempInt));
                         if (tempInt2 == 1) {
@@ -274,12 +333,17 @@ public class app {
                                     + "o emprestimo");
                             mostrarClientes(clientes);
                             tempInt2 = scan.nextInt();
-                            emprestimo = new Emprestimo(idEmprestimo,
-                                    "29/06/2022", "06/07/2022",
-                                    clientes.get(tempInt2), midias.get(tempInt));
+                            if (tempInt < clientes.size() - 1 || tempInt > clientes.size()) {
+
+                            } else {
+                                emprestimo = new Emprestimo(idEmprestimo,
+                                        "29/06/2022", "06/07/2022",
+                                        clientes.get(tempInt2), midias.get(tempInt));
+                                idEmprestimo++;
+                                midias.get(tempInt).emprestar(cli);
+                            }
                         }
-                        idEmprestimo++;
-                        midias.get(tempInt).emprestar(cli);
+
                     }
 
                     break;
