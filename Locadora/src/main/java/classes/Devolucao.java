@@ -20,6 +20,10 @@ public class Devolucao {
     private Pagamento dinheiro;
     private Pagamento cartaoCredito;
 
+   
+    
+    
+
     public String getDataEfetiva() {
         return dataEfetiva;
     }
@@ -65,5 +69,9 @@ public class Devolucao {
         this.emprestimo = emprestimo;
         dinheiro = new Dinheiro(this);
         cartaoCredito = new CartaoCredito(this);
+    }
+    
+    public void pagar(){
+        pagamento.pagar();
     }
 }

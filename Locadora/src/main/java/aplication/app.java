@@ -56,9 +56,9 @@ public class app {
         System.out.println("+Midias cadastradas no sistema+");
         if (midias.size() > 0) {
             for (int i = 0; i < midias.size(); i++) {
-                System.out.println(i +
-                        "-nome: " + midias.get(i).getTituloTemp()
-                + " id:" + midias.get(i).getId());
+                System.out.println(i
+                        + "-nome: " + midias.get(i).getTituloTemp()
+                        + " id:" + midias.get(i).getId());
             }
         } else {
             System.out.println("nao ha midias cadastradas no sistema");
@@ -76,6 +76,19 @@ public class app {
         }
     }
 
+    public static int achaReserva(ArrayList<Reserva> reservas, Midia midia) {
+        int flag = 0;
+        int cont = 0;
+        while (cont < reservas.size() && flag == 0) {
+            if (reservas.get(cont).getMidia() == midia) {
+                flag = 1;
+            }
+            cont++;
+
+        }
+        return flag;
+    }
+
     public static void main(String[] args) throws ParseException {
 
         int opcao = 999;
@@ -86,15 +99,17 @@ public class app {
         int idDevolucao = 0;
         Date data;
 
-        int tempInt, tempInt2;
+        int tempInt, tempInt2, tempInt3;
 
         Scanner scan = new Scanner(System.in);
 
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Titulo> titulos = new ArrayList<>();
         ArrayList<Midia> midias = new ArrayList<>();
+        ArrayList<Reserva> reservas = new ArrayList<>();
 
         Cliente cli = new Cliente(1, "Robson", "123456", "23/11/2015");
+        Emprestimo emprestimo = new Emprestimo();
 
         cli.cadastrar(cli);
 
@@ -113,7 +128,6 @@ public class app {
         midias.add(m);
         id++;
 
-        
         while (opcao != 0) {
             menu();
             opcao = scan.nextInt();
@@ -155,6 +169,9 @@ public class app {
                             + "que ira fazer a reserva");
                     tempInt2 = scan.nextInt();
                     midias.get(tempInt).reservar(clientes.get(tempInt2));
+                    Reserva reserva = new Reserva("28/06/2022",
+                            clientes.get(tempInt2), midias.get(tempInt));
+                    reservas.add(reserva);
                     break;
                 case 4:
                     System.out.println("escolha o numero da midia cuja reserva "
@@ -173,6 +190,19 @@ public class app {
                     mostrarClientes(clientes);
                     tempInt2 = scan.nextInt();
                     midias.get(tempInt).devolver(clientes.get(tempInt2));
+                    System.out.println("escolha o metodo de pagamento: 1 para "
+                            + " dinheiro e 2 para cartao de credito");
+                    tempInt = scan.nextInt();
+                    Devolucao devolucao = new Devolucao("28/06/2022", emprestimo);
+                    if (tempInt == 1) {
+
+                        devolucao.setPagamento(devolucao.getDinheiro());
+
+                    } else {
+                        devolucao.setPagamento(devolucao.getCartaoCredito());
+                    }
+                    devolucao.pagar();
+                    //emprestimo.pagar();
                     break;
                 case 6:
                     System.out.println("escolha o numero da midia que voce "
@@ -207,10 +237,26 @@ public class app {
                     mostrarMidias(midias);
                     break;
                 case 9:
+
                     System.out.println("selecione a midia que voce deseja "
                             + "realizar um emprestimo");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
+                    tempInt2 = achaReserva(reservas, midias.get(tempInt));
+                    if (tempInt2 == 1) {
+                        emprestimo = new Emprestimo(idEmprestimo,
+                                "29/06/2022", "06/07/2022", reservas.get(tempInt));
+
+                    } else {
+                        System.out.println("escolha o numero do cliente que fara "
+                                + "o emprestimo");
+                        mostrarClientes(clientes);
+                        tempInt2 = scan.nextInt();
+                        emprestimo = new Emprestimo(idEmprestimo,
+                                "29/06/2022", "06/07/2022",
+                                clientes.get(tempInt2), midias.get(tempInt));
+                    }
+                    idEmprestimo++;
                     midias.get(tempInt).emprestar(cli);
                     break;
             }

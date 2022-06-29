@@ -50,7 +50,7 @@ public class Reservado implements Estado {
 
     @Override
     public void reservar(Cliente cliente) {
-        System.out.println("ERRO: a midia " + midia.getTituloTemp() + "nao pode ser"
+        System.out.println("ERRO: a midia " + midia.getTituloTemp() + " nao pode ser"
                 + " reservada para o cliente " + cliente.getNome() + " pois ja esta"
                 + "reservada");
         midia.setEstado(midia.getReservado());
