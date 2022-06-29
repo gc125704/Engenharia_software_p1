@@ -91,6 +91,20 @@ public class app {
         return flag;
     }
 
+    public final static void limpaConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (final Exception e) {
+            //  Handle any exceptions.
+        }
+    }
+
     public static void main(String[] args) throws ParseException {
 
         int opcao = 999;
@@ -131,6 +145,7 @@ public class app {
         id++;
 
         while (opcao != 0) {
+            limpaConsole();
             menu();
             opcao = scan.nextInt();
             switch (opcao) {
@@ -244,22 +259,28 @@ public class app {
                             + "realizar um emprestimo");
                     mostrarMidias(midias);
                     tempInt = scan.nextInt();
-                    tempInt2 = achaReserva(reservas, midias.get(tempInt));
-                    if (tempInt2 == 1) {
-                        emprestimo = new Emprestimo(idEmprestimo,
-                                "29/06/2022", "06/07/2022", reservas.get(tempInt));
-
+                    if (tempInt > midias.size() || tempInt > midias.size()) {
+                        System.out.println("digite um valor valido de posição "
+                                + "da midia");
                     } else {
-                        System.out.println("escolha o numero do cliente que fara "
-                                + "o emprestimo");
-                        mostrarClientes(clientes);
-                        tempInt2 = scan.nextInt();
-                        emprestimo = new Emprestimo(idEmprestimo,
-                                "29/06/2022", "06/07/2022",
-                                clientes.get(tempInt2), midias.get(tempInt));
+                        tempInt2 = achaReserva(reservas, midias.get(tempInt));
+                        if (tempInt2 == 1) {
+                            emprestimo = new Emprestimo(idEmprestimo,
+                                    "29/06/2022", "06/07/2022", reservas.get(tempInt));
+
+                        } else {
+                            System.out.println("escolha o numero do cliente que fara "
+                                    + "o emprestimo");
+                            mostrarClientes(clientes);
+                            tempInt2 = scan.nextInt();
+                            emprestimo = new Emprestimo(idEmprestimo,
+                                    "29/06/2022", "06/07/2022",
+                                    clientes.get(tempInt2), midias.get(tempInt));
+                        }
+                        idEmprestimo++;
+                        midias.get(tempInt).emprestar(cli);
                     }
-                    idEmprestimo++;
-                    midias.get(tempInt).emprestar(cli);
+
                     break;
                 case 10:
                     mostrarClientes(clientes);
